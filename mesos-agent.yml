@@ -11,7 +11,7 @@
       yum_repository:
         name: bintray-mesos-el
         description: Apache Mesos Repository
-        baseurl: https://dl.bintray.com/apache/mesos/el/$releasever/$basearch/
+        baseurl: https://dl.bintray.com/apache/mesos/el$releasever/$basearch/
         gpgcheck: no
         enabled: yes
 
