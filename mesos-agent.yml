@@ -1,0 +1,26 @@
+---
+- name: mesos-agent
+  hosts: '{{ target }}'
+  gather_facts: yes
+  vars:
+    mesos_master: '{{ mesos_master }}'
+  become: true
+  become_user: root
+  tasks:
+    - name: mesos repository
+      yum_repository:
+        name: bintray-mesos-el
+        description: Apache Mesos Repository
+        baseurl: https://dl.bintray.com/apache/mesos/el/$releasever/$basearch/
+        gpgcheck: no
+        enabled: yes
+
+    - name: package updates
+      yum:
+        name: '*'
+        state: latest
+
+    - name: mesos package
+      package:
+        name: mesos
+        state: present
